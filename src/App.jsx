@@ -9,47 +9,18 @@ function App() {
   const [isAdded, setIsAdded] = useState(false);
   const [show, setShow] = useState(false);
 
-  // const filteredProject = projects.filter((project) => project.id === isId);
-  // const handleAddProject = (project) => {
-  //   setProjects((prevProjects) => {
-  //     const newProjects = { ...project, id: Math.random() };
-
-  //     setIsAdded(false);
-
-  //     return [...prevProjects, newProjects];
-  //   });
-  // };
-
-  // console.log("projects: ", projects);
-
   return (
     <TaskContextProvider setIsAdded={setIsAdded}>
       <main className="h-screen my-8 flex gap-8">
-        <ProjectsSidebar
-          setIsAdded={setIsAdded}
-          
-          setShow={setShow}
-        />
+        <ProjectsSidebar setIsAdded={setIsAdded} setShow={setShow} />
 
         {isAdded ? (
-          <NewProject
-           
-            setIsAdded={setIsAdded}
-            show={show}
-          />
+          <NewProject setIsAdded={setIsAdded} show={show} />
         ) : (
           <NoProjectSelected setIsAdded={setIsAdded} show={show} />
         )}
 
-        {show && (
-          <SelectedProject
-            // setId={setDelId}
-            // project={filteredProject[0]}
-            setShow={setShow}
-            // handleAddTask={handleAddTask}
-            // handleDeleteTask={handleDeleteTask}
-          />
-        )}
+        {show && <SelectedProject setShow={setShow} />}
       </main>
     </TaskContextProvider>
   );

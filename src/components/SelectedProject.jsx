@@ -1,15 +1,9 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Tasks from "./Tasks";
 import { TaskContext } from "../store/task-context";
 
-const SelectedProject = ({
-  
-
-  setShow,
-  
-}) => {
-
-  const {project,setId} = useContext(TaskContext);
+const SelectedProject = ({ setShow }) => {
+  const { project, setDelId } = useContext(TaskContext);
   if (!project) {
     return null; // or return some fallback UI
   }
@@ -20,7 +14,7 @@ const SelectedProject = ({
   });
 
   function handleDelete(id) {
-    setId(id);
+    setDelId(id);
   }
 
   return (
@@ -45,9 +39,7 @@ const SelectedProject = ({
           {project.description}
         </p>
       </header>
-      <Tasks
-        
-      />
+      <Tasks />
     </div>
   );
 };
