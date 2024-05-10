@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "./Button";
+import { TaskContext } from "../store/task-context";
 
-const ProjectsSidebar = ({ setIsAdded, projects, setId, setShow }) => {
+const ProjectsSidebar = ({ setIsAdded, setShow }) => {
+
+  const {projects,setId} = useContext(TaskContext);
   function openProject(id) {
     setId(id);
   }

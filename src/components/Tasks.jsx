@@ -1,12 +1,15 @@
-import React from "react";
+import React,{useContext} from "react";
 import NewTasks from "./NewTasks";
+import { TaskContext } from "../store/task-context";
 
-const Tasks = ({ handleAddTask, handleDeleteTask, project }) => {
+const Tasks = () => {
+const {handleDeleteTask,project} = useContext(TaskContext);
+
   return (
 
     <section>
       <h2 className="text-2xl font-bold text-stone-700 mb-4">Tasks</h2>
-      <NewTasks onAdd={handleAddTask} />
+      <NewTasks  />
       
       {Array.isArray(project.task) && project.task.length > 0 && (  <ul className="p-4 mt-8 rounded-md bg-stone-100">
         {Array.isArray(project.task) &&

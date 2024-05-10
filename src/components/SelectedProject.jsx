@@ -1,13 +1,15 @@
-import React from "react";
+import React,{useContext} from "react";
 import Tasks from "./Tasks";
+import { TaskContext } from "../store/task-context";
 
 const SelectedProject = ({
-  project,
-  setId,
+  
+
   setShow,
-  handleDeleteTask,
-  handleAddTask,
+  
 }) => {
+
+  const {project,setId} = useContext(TaskContext);
   if (!project) {
     return null; // or return some fallback UI
   }
@@ -44,9 +46,7 @@ const SelectedProject = ({
         </p>
       </header>
       <Tasks
-        handleAddTask={handleAddTask}
-        handleDeleteTask={handleDeleteTask}
-        project={project}
+        
       />
     </div>
   );

@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef,useContext } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
+import { TaskContext } from "../store/task-context";
 
-const NewProject = ({ addData, setIsAdded }) => {
+const NewProject = ({  setIsAdded }) => {
+
+  const {handleAddProject} = useContext(TaskContext);
   const modal = useRef();
   const title = useRef();
   const description = useRef();
@@ -22,7 +25,7 @@ const NewProject = ({ addData, setIsAdded }) => {
       return;
     }
 
-    addData({
+    handleAddProject({
       title: enteredTitle,
       description: enteredDescription,
       dueDate: enteredDueDate,
